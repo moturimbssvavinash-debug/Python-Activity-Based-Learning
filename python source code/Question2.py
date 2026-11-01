@@ -76,7 +76,7 @@ def cancel_booking(booking, hours_before):
     rows, total_refund = [], 0.0
     for d in booking["details"]:
         penalty = cancellation_penalty(d, booking["class"], hours_before)
-        refund = max(d["fare"] - penalty, 0)             # reservation fee not refunded
+        refund = max(d["fare"] - penalty, 0)             
         rows.append((d["name"], d["total"], penalty, d["reservation"], round(refund, 2)))
         total_refund += refund
     return rows, round(total_refund, 2)
